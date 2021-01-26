@@ -8,7 +8,8 @@ of the features of `slog` are retained. Thanks the effictive works by sile.
 Example:
 
 ```
-use std::io;                                                                                                                                                       extern crate chrono;
+use std::io;
+extern crate chrono;
 
 #[macro_use]
 extern crate slog;
