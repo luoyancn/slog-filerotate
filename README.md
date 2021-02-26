@@ -18,17 +18,17 @@ extern crate slog_term;
 
 use slog::Drain;
 use slog::FnValue;
-use slog_filerotate::{FileAppender, KB};
+use slog_filerotate::FileAppender;
 
 const TIMESTAMP_FORMAT: &str = "%Y-%m-%d %H:%M:%S%.9f";
 
 fn main() {
     // first params means the log file path
     // second means truncate
-    // third means log file size, for file rotation
+    // third means log file size, for file rotation, default is bit
     // forth means keep how many logs
     // fifth means compress the log file
-    let adapter = FileAppender::new("logfiles", true, KB, 2, true);
+    let adapter = FileAppender::new("logfiles", true, 1024, 2, true);
     let decorator_file = slog_term::PlainSyncDecorator::new(adapter);
     let drain_file = slog_term::FullFormat::new(decorator_file)
         .use_custom_timestamp(move |io: &mut dyn io::Write| {
