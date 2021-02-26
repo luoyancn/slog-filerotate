@@ -11,11 +11,6 @@ extern crate libflate;
 
 use libflate::gzip::Encoder as GzipEncoder;
 
-pub const BITE: u64 = 1;
-pub const KB: u64 = BITE * 1024;
-pub const MB: u64 = KB * 1024;
-pub const GB: u64 = MB * 1024;
-
 pub struct FileAppender {
     path: PathBuf,
     file: Option<BufWriter<File>>,
